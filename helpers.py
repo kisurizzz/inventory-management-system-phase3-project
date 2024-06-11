@@ -88,3 +88,35 @@ def find_Product_by_id():
     id_ = input("Enter the Product's id: ")
     product = Product.find_product_by_id(id_)
     print(product) if product else print(f'Product {id_} not found')
+
+def update_product():
+    id_ = input("Enter the product's id: ")
+    if product := Product.find_product_by_id(id_):
+        try:
+            name = input("Enter the product's new name: ")
+            product.name = name
+            
+            price = int(input("Enter the product's new price: "))
+            product.price = price
+
+            stock = int(input("Enter the product's new available stock: "))
+            product.stock = stock
+            
+            category_id = int(input("Enter the product's new category id: "))
+            product.category_id = int(category_id)
+
+            product.update()
+            print(f'Success: {product},')
+        except Exception as exc:
+            print("Error updating product: ", exc)
+    else:
+        print(f'product {id_} not found')
+
+
+def delete_product():
+    id_ = input("Enter the product's id: ")
+    if product := Product.find_product_by_id(id_):
+        product.delete()
+        print(f'product {id_} deleted')
+    else:
+        print(f'product {id_} not found')

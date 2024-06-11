@@ -13,7 +13,9 @@ from helpers import (
     create_product,
     list_products,
     find_Product_by_id,
-    find_product_by_name
+    find_product_by_name,
+    update_product,
+    delete_product
 )
 
 
@@ -43,6 +45,10 @@ def main():
             find_Product_by_id()
         elif choice == '10':
             create_product()
+        elif choice == '11':
+            update_product()
+        elif choice == '12':
+            delete_product()
         elif choice == "14":
             helper_1()
         else:

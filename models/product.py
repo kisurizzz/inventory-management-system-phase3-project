@@ -141,6 +141,34 @@ class Product:
         row = CURSOR.execute(sql, (name,)).fetchone()
         return cls.instance_from_db(row) if row else None
     
+    def update(self):
+        """Update the table row corresponding to the current Product instance."""
+        sql = """
+            UPDATE products
+            SET name = ?, price = ?, stock = ?, category_id = ?
+            WHERE id = ?
+        """
+        CURSOR.execute(sql, (self.name, self.price, self.stock, self.category_id,self.id))
+        CONN.commit()
+
+    def delete(self):
+        """Delete the table row corresponding to the current Product instance,
+        delete the dictionary entry, and reassign id attribute"""
+
+        sql = """
+            DELETE FROM products
+            WHERE id = ?
+        """
+
+        CURSOR.execute(sql, (self.id,))
+        CONN.commit()
+
+        # Delete the dictionary entry using id as the key
+        del type(self).all[self.id]
+
+        # Set the id to None
+        self.id = None
+
 
 # product2 = Product("mens jeans", 1200, 8, 2)
 # product2.save()
