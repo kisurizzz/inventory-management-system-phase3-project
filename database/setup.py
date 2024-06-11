@@ -1,5 +1,6 @@
 from connection  import CONN, CURSOR
 
+
 def create_tables():
 
     CURSOR.execute('''
@@ -13,7 +14,6 @@ def create_tables():
         CREATE TABLE IF NOT EXISTS products (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name VARCHAR NOT NULL,
-            description VARCHAR NOT NULL,
             price INTEGER NOT NULL,
             stock INTEGER,
             category_id INTEGER,
@@ -34,4 +34,16 @@ def create_tables():
     CONN.commit()
     CONN.close()
 
+
+def drop_table():
+    """ Drop the table that persists product instances """
+    sql = """
+        DROP TABLE IF EXISTS products;
+    """
+    CURSOR.execute(sql)
+    CONN.commit()
+
+drop_table()
+
 create_tables()
+

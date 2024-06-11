@@ -48,3 +48,11 @@ def update_category():
             print("Error updating category: ", exc)
     else:
         print(f'Category {id_} not found')
+
+def delete_category():
+    id_ = input("Enter the department's id: ")
+    if department := Category.find_by_id(id_):
+        department.delete()
+        print(f'Category {id_} deleted')
+    else:
+        print(f'Category {id_} not found')
