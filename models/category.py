@@ -42,6 +42,13 @@ class Category:
         self.id = CURSOR.lastrowid
         type(self).all[self.id] = self
     
-category1 = Category("Electronics")
+    @classmethod
+    def create(cls, name):
+        """ Initialize a new category instance and save the object to the database """
+        category = cls(name)
+        category.save_to_db()
+        return category
+    
+category1 = Category("Clothing")
 category1.save_to_db()
 print(Category.all)
