@@ -2,7 +2,7 @@
 import sqlite3
 
 CONN = sqlite3.connect('inventory.db')
-CURSOR = CONN.cursor()
+CURSOR = CONN.CURSOR()
 
 
 class Category:
@@ -128,6 +128,41 @@ class Category:
 
         # Set the id to None
         self.id = None
+
+
+    def productsss(self):
+        """Return list of products associated with current department"""
+        from models.product import Product
+        sql = """
+            SELECT * FROM products
+            WHERE category_id = ?
+        """
+        CURSOR.execute(sql, (self.id,),)
+
+        rows = CURSOR.fetchall()
+        return [
+            Product.instance_from_db(row) for row in rows
+        ]
+    
+    @property
+    def products(self):
+        """
+        Property method to retrieve the products of a category.
+        """
+        from models.product import Product
+
+        CURSOR.execute('''
+            SELECT DISTINCT products.id, products.name, products.price, products.stock, products.category_id
+            FROM products 
+            INNER JOIN categories  ON products.category_id = categories.id
+            WHERE categories.id = ?
+        ''', (self.id,))
+        product_info = CURSOR.fetchall()
+        CONN.close()
+        if product_info:
+            return [Product(product["id"], product['name'], product['price'], product['stock'], product['category_id']) for product in product_info]
+        else:
+            return []
 
     
 # category1 = Category("Clothing")

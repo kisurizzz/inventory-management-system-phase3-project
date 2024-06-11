@@ -58,6 +58,10 @@ def delete_category():
     else:
         print(f'Category {id_} not found')
 
+def list_category_products():
+    
+
+
 
 ## Product Functions
 
