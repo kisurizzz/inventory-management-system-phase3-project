@@ -49,6 +49,34 @@ class Category:
         category.save_to_db()
         return category
     
-category1 = Category("Clothing")
-category1.save_to_db()
-print(Category.all)
+    @classmethod
+    def instance_from_db(cls, row):
+        """Return a category object having the attribute values from the table row."""
+
+        # Check the dictionary for an existing instance using the row's primary key
+        category = cls.all.get(row[0])
+        if category:
+            # ensure attributes match row values in case local instance was modified
+            category.name = row[1]
+        else:
+            # not in dictionary, create new instance and add to dictionary
+            category = cls(row[1])
+            category.id = row[0]
+            cls.all[category.id] = category
+        return category
+        
+    @classmethod
+    def get_all(cls):
+        """Return a list containing a Category object per row in the table"""
+        sql = """
+            SELECT *
+            FROM categories
+        """
+
+        rows = CURSOR.execute(sql).fetchall()
+
+        return [cls.instance_from_db(row) for row in rows]
+    
+# category1 = Category("Clothing")
+# category1.save_to_db()
+# print(Category.all)

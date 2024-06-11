@@ -9,6 +9,12 @@ def exit_program():
     print("Goodbye!")
     exit()
 
+def list_categories():
+    categories = Category.get_all()
+    for category in categories:
+        print(category)
+
+
 def create_category():
     name = input("Enter the category's name: ")
     try:

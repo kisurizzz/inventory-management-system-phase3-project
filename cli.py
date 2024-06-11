@@ -3,7 +3,8 @@
 from helpers import (
     exit_program,
     helper_1,
-    create_category
+    create_category,
+    list_categories
 )
 
 
@@ -14,9 +15,11 @@ def main():
         if choice == "0":
             exit_program()
         elif choice == "1":
-            helper_1()
+            list_categories()
         elif choice == '4':
             create_category()
+        elif choice == "14":
+            helper_1()
         else:
             print("Invalid choice")
 
