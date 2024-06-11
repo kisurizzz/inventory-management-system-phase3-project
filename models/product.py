@@ -17,8 +17,8 @@ class Product:
 
     def __repr__(self):
         return (
-            f"<Product {self.id}: {self.name}, {self.price}, " +
-            f"Product ID: {self.category_id}>"
+            f"<Product ID {self.id}: Product - {self.name}, Price - Ksh {self.price}, Stock - {self.stock} " +
+            f"Category ID: {self.category_id}>"
         )
     
     @property
@@ -42,7 +42,7 @@ class Product:
         if type(price) is int:
             self._price = price
         else:
-            raise AttributeError ('Price of product must be an integer ')
+            raise ValueError ('Price of product must be an integer ')
     @property
     def stock (self):
         return self._stock
@@ -70,7 +70,7 @@ class Product:
         type(self).all[self.id] = self
     
     @classmethod
-    def create(cls, name, price, stock, category_id):
+    def create_product(cls, name, price, stock, category_id):
         """ Initialize a new product instance and save the object to the database """
         product = cls(name, price, stock, category_id)
         product.save()
@@ -85,8 +85,63 @@ class Product:
         """
         CURSOR.execute(sql)
         CONN.commit()
+
+    @classmethod
+    def instance_from_db(cls, row):
+        """Return an product object having the attribute values from the table row."""
+
+        # Check the dictionary for  existing instance using the row's primary key
+        product = cls.all.get(row[0])
+        if product:
+            # ensure attributes match row values in case local instance was modified
+            product.name = row[1]
+            product.price = row[2]
+            product.stock = row[3]
+            product.category_id = row[4]
+        else:
+            # not in dictionary, create new instance and add to dictionary
+            product = cls(row[1], row[2], row[3], row[4])
+            product.id = row[0]
+            cls.all[product.id] = product
+        return product
+    
+    @classmethod
+    def get_all_products(cls):
+        """Return a list containing one product object per table row"""
+        sql = """
+            SELECT *
+            FROM products
+        """
+
+        rows = CURSOR.execute(sql).fetchall()
+
+        return [cls.instance_from_db(row) for row in rows]
+    
+    @classmethod
+    def find_product_by_id(cls, id):
+        """Return product object corresponding to the table row matching the specified primary key"""
+        sql = """
+            SELECT *
+            FROM products
+            WHERE id = ?
+        """
+
+        row = CURSOR.execute(sql, (id,)).fetchone()
+        return cls.instance_from_db(row) if row else None
+
+    @classmethod
+    def find_by_name(cls, name):
+        """Return product object corresponding to first table row matching specified name"""
+        sql = """
+            SELECT *
+            FROM products
+            WHERE name is ?
+        """
+
+        row = CURSOR.execute(sql, (name,)).fetchone()
+        return cls.instance_from_db(row) if row else None
     
 
-# product1 = Product("soda", 80, 120, 4)
-# product1.save()
+# product2 = Product("mens jeans", 1200, 8, 2)
+# product2.save()
 # print(Product.all)

@@ -1,5 +1,6 @@
 #cli.py
 
+
 from helpers import (
     exit_program,
     helper_1,
@@ -8,7 +9,11 @@ from helpers import (
     find_category_by_name,
     find_category_by_id,
     update_category,
-    delete_category
+    delete_category,
+    create_product,
+    list_products,
+    find_Product_by_id,
+    find_product_by_name
 )
 
 
@@ -30,6 +35,14 @@ def main():
             update_category()
         elif choice == '6':
             delete_category()
+        elif choice == '7':
+            list_products()
+        elif choice == '8':
+            find_product_by_name()
+        elif choice == '9':
+            find_Product_by_id()
+        elif choice == '10':
+            create_product()
         elif choice == "14":
             helper_1()
         else:
