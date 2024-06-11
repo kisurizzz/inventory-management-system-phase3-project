@@ -34,3 +34,17 @@ def find_category_by_id():
     id_ = input("Enter the category's id: ")
     category = Category.find_by_id(id_)
     print(category) if category else print(f'category {id_} not found')
+
+def update_category():
+    id_ = input("Enter the category's id: ")
+    if category := Category.find_by_id(id_):
+        try:
+            name = input("Enter the category's new name: ")
+            category.name = name
+
+            category.update()
+            print(f'Success: {category}')
+        except Exception as exc:
+            print("Error updating category: ", exc)
+    else:
+        print(f'Category {id_} not found')

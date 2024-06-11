@@ -6,7 +6,8 @@ from helpers import (
     create_category,
     list_categories,
     find_category_by_name,
-    find_category_by_id
+    find_category_by_id,
+    update_category
 )
 
 
@@ -24,6 +25,8 @@ def main():
             find_category_by_id()
         elif choice == '4':
             create_category()
+        elif choice == '5':
+            update_category()
         elif choice == "14":
             helper_1()
         else:
