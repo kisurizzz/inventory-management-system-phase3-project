@@ -5,7 +5,8 @@ from helpers import (
     helper_1,
     create_category,
     list_categories,
-    find_category_by_name
+    find_category_by_name,
+    find_category_by_id
 )
 
 
@@ -19,6 +20,8 @@ def main():
             list_categories()
         elif choice == "2":
             find_category_by_name()
+        elif choice == "3":
+            find_category_by_id()
         elif choice == '4':
             create_category()
         elif choice == "14":

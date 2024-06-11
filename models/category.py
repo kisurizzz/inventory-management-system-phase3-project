@@ -89,6 +89,21 @@ class Category:
         row = CURSOR.execute(sql, (name,)).fetchone()
         return cls.instance_from_db(row) if row else None
     
+    @classmethod
+    def find_by_id(cls, id):
+        """Return a Category object corresponding to the table row matching the specified primary key"""
+        sql = """
+            SELECT *
+            FROM categories
+            WHERE id = ?
+        """
+
+        row = CURSOR.execute(sql, (id,)).fetchone()
+        return cls.instance_from_db(row) if row else None
+    
+    
+
+    
 # category1 = Category("Clothing")
 # category1.save_to_db()
 # print(Category.all)

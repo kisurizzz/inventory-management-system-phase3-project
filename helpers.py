@@ -28,3 +28,9 @@ def find_category_by_name():
     category = Category.find_by_name(name)
     print(category) if category else print(
         f'category {name} not found')
+    
+def find_category_by_id():
+    # use a trailing underscore not to override the built-in id function
+    id_ = input("Enter the category's id: ")
+    category = Category.find_by_id(id_)
+    print(category) if category else print(f'category {id_} not found')
