@@ -22,3 +22,9 @@ def create_category():
         print(f'Success: {category}')
     except Exception as exc:
         print("Error creating category: ", exc)
+
+def find_category_by_name():
+    name = input("Enter the category's name: ")
+    category = Category.find_by_name(name)
+    print(category) if category else print(
+        f'category {name} not found')

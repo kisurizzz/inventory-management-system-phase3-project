@@ -77,6 +77,18 @@ class Category:
 
         return [cls.instance_from_db(row) for row in rows]
     
+    @classmethod
+    def find_by_name(cls, name):
+        """Return a Category object corresponding to first table row matching specified name"""
+        sql = """
+            SELECT *
+            FROM categories
+            WHERE name is ?
+        """
+
+        row = CURSOR.execute(sql, (name,)).fetchone()
+        return cls.instance_from_db(row) if row else None
+    
 # category1 = Category("Clothing")
 # category1.save_to_db()
 # print(Category.all)
