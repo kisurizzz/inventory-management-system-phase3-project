@@ -15,7 +15,8 @@ from helpers import (
     find_Product_by_id,
     find_product_by_name,
     update_product,
-    delete_product
+    delete_product,
+    list_category_products
 )
 
 
@@ -49,6 +50,8 @@ def main():
             update_product()
         elif choice == '12':
             delete_product()
+        elif choice == '13':
+            list_category_products()
         elif choice == "14":
             helper_1()
         else:
