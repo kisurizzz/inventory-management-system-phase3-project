@@ -62,7 +62,7 @@ Category Management:
 
 5. Activate the virtual environment: pipenv shell
 
-6. Execute the main script to start the CLI: ```bash python cli.py.```
+6. Execute the main script to start the CLI: ```python cli.py.```
 
 7. Follow the on-screen prompts to navigate through the various features of the inventory management system.
 
