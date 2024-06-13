@@ -17,6 +17,18 @@ class Sale:
     def __repr__(self):
         return f'SaleID {self.id} - productID {self.product_id},  Quantity sold: {self.quantity_sold},  sale Date : {self.sale_date}'
     
+    @property
+    def quantity_sold(self):
+        return self._quantity_sold
+    
+    @quantity_sold.setter
+    def quantity_sold(self, quantity_sold):
+        if type (quantity_sold) is int:
+            self._quantity_sold = quantity_sold
+        else:
+            raise AttributeError ('Quantity sold should be an integer')
+
+    
     def save(self):
         """ Insert a new row with the sale_id value of the current Sale instance.
         Update object id attribute using the primary key value of the new row.
