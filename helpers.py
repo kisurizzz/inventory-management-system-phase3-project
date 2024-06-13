@@ -138,7 +138,7 @@ def delete_product():
 
 def create_sale():
     product_sold_id = int(input("Enter the product's id: "))
-    quantity_ = input("Enter the product's stock: ")
+    quantity_ = int(input("Enter the product's stock: "))
     sale_date_ = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     try:
         sale = Sale.create_sale(product_sold_id, quantity_, sale_date_ )

@@ -43,7 +43,7 @@ def drop_table():
     CURSOR.execute(sql)
     CONN.commit()
 
-drop_table()
+# drop_table()
 
 create_tables()
 

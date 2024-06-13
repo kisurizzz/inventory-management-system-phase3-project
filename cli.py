@@ -71,8 +71,11 @@ def main():
 
 
 def menu():
+    print("*******************************")
     print('*** Suris Inventory Manager ***')
+    print("*******************************")
     print("Please select an option:")
+    print()
     print("0. Exit the program")
     print("1. List all category")
     print("2. Find category by name")
@@ -80,6 +83,7 @@ def menu():
     print("4: Create new category")
     print("5: Update category")
     print("6: Delete category")
+    print("*******************************")
     print("7. List all products")
     print("8. Find products by name")
     print("9. Find product by id")
@@ -87,6 +91,7 @@ def menu():
     print("11: Update product")
     print("12: Delete product")
     print("13: List all products in a category")
+    print("*******************************")
     print("14: Create new sale")
     print("15: List all sales")
     print("16: Find sale by id")
