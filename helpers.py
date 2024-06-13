@@ -1,6 +1,8 @@
 # lib/helpers.py
 from models.category import Category
 from models.product import Product
+from models.sale import Sale
+from datetime import datetime
 
 def helper_1():
     print("Performing useful function#1.")
@@ -131,3 +133,34 @@ def delete_product():
         print(f'product {id_} deleted')
     else:
         print(f'product {id_} not found')
+
+##sales
+
+def create_sale():
+    product_sold_id = int(input("Enter the product's id: "))
+    quantity_ = int(input("Enter the product's stock: "))
+    sale_date_ = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    try:
+        sale = Sale.create_sale(product_sold_id, quantity_, sale_date_ )
+        print(f'Success: {sale}')
+    except Exception as exc:
+        print("Error creating new sale: ", exc)
+
+def list_sales():
+    sales = Sale.get_all_sales()
+    for sale in sales:
+        print(sale)
+
+
+def find_sale_by_id():
+    id_ = int(input("Enter the sales's id: "))
+    sale = Sale.find_sale_by_id(id_)
+    print(sale) if sale else print(f'Sale object {id_} not found')
+
+def delete_sale():
+    id_ = int(input("Enter the sale's id: "))
+    if sale := Sale.find_sale_by_id(id_):
+        sale.delete()
+        print(f'sale {id_} deleted')
+    else:
+        print(f'sale {id_} not found')

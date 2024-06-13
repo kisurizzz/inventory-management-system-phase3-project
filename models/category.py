@@ -177,17 +177,7 @@ class Category:
     #     row = CURSOR.execute(sql, (id,)).fetchone()
     #     return cls.instance_from_db(row) if row else None
 
-        # CURSOR.execute('''
-        #     SELECT DISTINCT products.id, products.name, products.price, products.stock, products.category_id
-        #     FROM products 
-        #     INNER JOIN categories ON products.category_id = categories.id
-        #     WHERE categories.id = ?
-        # ''', (id,))
-        # # product_info = CURSOR.fetchall()
-        # # products = [Product(product[0], product[1], product[2], product[3], product[4]) for product in product_info]
-        # rows = CURSOR.execute(sql).fetchall()
 
-        # return [cls.instance_from_db(row) for row in rows]
 
 
     
