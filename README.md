@@ -58,9 +58,9 @@ Category Management:
 
 3. Navigate to the project folder on your terminal.
 
-4. Install dependencies using Pipenv: pipenv install.
+4. Install dependencies using Pipenv: ```pipenv install```
 
-5. Activate the virtual environment: pipenv shell
+5. Activate the virtual environment: ```pipenv shell```
 
 6. Execute the main script to start the CLI: ```python cli.py.```
 
