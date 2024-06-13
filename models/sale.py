@@ -1,11 +1,12 @@
 import sqlite3
-from datetime import datetime
+from datetime import datetime ## in order to use the time function in the application
 
 CONN = sqlite3.connect('inventory.db')
 CURSOR = CONN.cursor()
 
 class Sale:
 
+    # Dictionary of objects saved to the database.
     all = {}
 
     def __init__(self, product_id, quantity_sold, sale_date = None, id = None):

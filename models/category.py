@@ -129,20 +129,6 @@ class Category:
         self.id = None
 
 
-    # def productsss(self):
-    #     """Return list of products associated with current department"""
-    #     from models.product import Product
-    #     sql = """
-    #         SELECT * FROM products
-    #         WHERE category_id = ?
-    #     """
-    #     CURSOR.execute(sql, (self.id,),)
-
-    #     rows = CURSOR.fetchall()
-    #     return [
-    #         Product.instance_from_db(row) for row in rows
-    #     ]
-
 
     def products(self):
         """Return list of products associated with current department"""
@@ -159,27 +145,4 @@ class Category:
             Product.instance_from_db(row) for row in rows
         ]
     
-    # @classmethod
-    # def products(cls, id):
-    #     """
-    #     Property method to retrieve the products of a category.
-    #     """
-    #     # from models.product import Product
-
-    #     sql = """
-    #         SELECT DISTINCT products.id, products.name, products.price, products.stock, products.category_id
-    #         FROM products 
-    #         INNER JOIN categories ON products.category_id = categories.id
-    #         WHERE categories.id = ?
-    #     """
-
-    #     row = CURSOR.execute(sql, (id,)).fetchone()
-    #     return cls.instance_from_db(row) if row else None
-
-
-
-
     
-# category1 = Category("Clothing")
-# category1.save_to_db()
-# print(Category.all)

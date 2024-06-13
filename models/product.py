@@ -6,6 +6,7 @@ CURSOR = CONN.cursor()
 
 class Product:
 
+    # Dictionary of objects saved to the database.
     all = {}
 
     def __init__(self, name, price, stock, category_id, id = None) -> None:
