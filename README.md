@@ -35,6 +35,12 @@ Category Management:
 * Supports database operations with multiple related tables (categories, products, and sales).
 * Ensures data integrity with foreign key constraints.
 
+### Screenshots
+
+![Screenshot of the ERD image](image/Phase%203%20project%20(CLI%20and%20ORM)%20Inventory%20management%20system.png)
+
+![Screenshot of the CLI](image/screenshot_of_CLI.png)
+
 <https://github.com/kisurizzz/inventory-management-system-phase3-project.git>
 
 ## How to Use
