@@ -51,47 +51,22 @@ def update_category():
         print(f'Category {id_} not found')
 
 def delete_category():
-    id_ = input("Enter the department's id: ")
-    if department := Category.find_by_id(id_):
-        department.delete()
+    id_ = input("Enter the category's id: ")
+    if category := Category.find_by_id(id_):
+        category.delete()
         print(f'Category {id_} deleted')
     else:
         print(f'Category {id_} not found')
 
+
 def list_category_products():
-    id_ = input("Enter the category's ID to filter out products")
+    id_ = input("Enter the category's id to list its products: ")
     if category := Category.find_by_id(id_):
-        category.products()
-        print(category) if category else print(
-        f'category {id_} not found')
-
-
-def list_category_products():
-    id_ = input("Enter the category's ID to filter out products: ")
-    
-    # Ensure the ID is an integer
-    try:
-        id_ = int(id_)
-    except ValueError:
-        print("Invalid ID. Please enter a numeric value.")
-        return
-
-    # Find the category by ID
-    category = Category.find_by_id(id_)
-    
-    if category:
-        products = category.products
-        if products:
-            print(f'Products in category {category.name}:')
-            for product in products:
-                print(product)
-        else:
-            print(f'No products found for category {category.name}.')
+        for product in category.products():
+            print(product)
     else:
-        print(f'Category with ID {id_} not found.')
+        print(f'Category {id_} not found')
     
-        
-
 
 
 

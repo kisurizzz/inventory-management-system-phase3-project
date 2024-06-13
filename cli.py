@@ -75,7 +75,7 @@ def menu():
     print("11: Update product")
     print("12: Delete product")
     print("13: List all products in a category")
-    print("13: List all products in a sold")
+    print("14: List all products in a sold")
 
 
 if __name__ == "__main__":
