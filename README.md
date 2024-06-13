@@ -1,36 +1,55 @@
-# Currency Converter
+# Inventory management CLI-ORM project
 
-a simple web app that uses an API to convert currencies.
+a simple CLI program that uses ORM and python to manage inventory of products and goods.
  April 11 2024
 
 By **Arnold Kisuri**
 
 ## Description
 
-This is a currency converter with a user comment section. Users can:
+The Inventory Management System is a Command Line Interface (CLI) application designed to help businesses efficiently manage their inventory. This system provides a simple and intuitive way to keep track of products, categories, and sales. With this tool, users can perform various operations to ensure their inventory data is accurate and up-to-date.
 
-* Convert currencies using exchange rates fetched from an external API.
-* Add comments with their name and text, which are saved to a server and displayed on the page.
-* Remove individual comments they've submitted.
+### Key Features
 
-the live link is as below;
+Category Management:
 
-<https://kisurizzz.github.io/project-1-currency-converter/>
+* Create, view, update, and delete product categories.
+* List all categories.
+
+#### Product Management:
+
+* Add new products with details such as name, price, stock, and category.
+* View details of individual products.
+* Update product information.
+* Delete products.
+* List all products.
+* Filter and list products by category.
+
+#### Sales Management:
+
+* Record new sales transactions, specifying product, quantity, and sale date.
+* View all sales records.
+
+#### Database Management:
+
+* Supports database operations with multiple related tables (categories, products, and sales).
+* Ensures data integrity with foreign key constraints.
+
+<https://github.com/kisurizzz/inventory-management-system-phase3-project.git>
 
 ## How to Use
 
 ### Requirements
 
-* A computer with a terminal and node installed.
+* A computer with a terminal and python installed.
 * Access to the internet.
-* json server
 
 ### Installation Process
 
 1. Clone this repository using
 
     ```bash
-      git clone git@github.com:kisurizzz/project-1-currency-converter.git
+      git@github.com:kisurizzz/inventory-management-system-phase3-project.git
     ```
 
     or by downloading a ZIP file of the code.
@@ -39,20 +58,24 @@ the live link is as below;
 
 3. Navigate to the project folder on your terminal.
 
-4. Run the local server
+4. Install dependencies using Pipenv: pipenv install.
 
-    ```bash
-      json-server --watch db.json
-    ```
+5. Activate the virtual environment: pipenv shell
 
-5. Run the application using live server
+6. Execute the main script to start the CLI: python cli.py.
 
+7. Follow the on-screen prompts to navigate through the various features of the inventory management system.
+
+### Example Commands:
+
+* Add a new category.
+* List all products in a specific category.
+* Record a new sale.
 
 ## Technologies Used
 
-* HTML
-* CSS
-* JavaScript
+* Python
+* SQL
 
 ## Support and Contact Details
 
